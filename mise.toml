@@ -5,7 +5,7 @@ tinytex = "2026.08"
 description = "Install the LaTeX packages used by the CV"
 run = '''
 tlmgr update --self
-tlmgr install latexmk carlito geometry xcolor enumitem fancyhdr ragged2e microtype needspace hyperref eso-pic
+tlmgr install latexmk carlito geometry xcolor enumitem ragged2e microtype needspace hyperref eso-pic tagpdf
 '''
 
 [tasks.build]

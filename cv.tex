@@ -1,3 +1,8 @@
+\DocumentMetadata{
+  lang=en-GB,
+  pdfversion=1.7,
+  tagging=on
+}
 \documentclass[10pt,a4paper]{article}
 
 \usepackage[T1]{fontenc}
@@ -6,7 +11,6 @@
 \usepackage[a4paper,left=19mm,right=19mm,top=15mm,bottom=13mm,includehead,headheight=11mm,headsep=3mm]{geometry}
 \usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage{fancyhdr}
 \usepackage{tabularx}
 \usepackage{ragged2e}
 \usepackage{microtype}
@@ -37,6 +41,9 @@
 \setlength{\parindent}{0pt}
 \setlength{\JustifyingParindent}{0pt}
 \setlength{\parskip}{0.28em}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=3em
 \setlist[itemize]{
   label=\textbullet,
   leftmargin=1.45em,
@@ -47,15 +54,10 @@
   partopsep=0pt
 }
 
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\fancyhead[C]{%
-  {\fontsize{15}{16}\selectfont\textbf{Cedric Specht}}\\[-0.05em]
-  {\fontsize{7.2}{8}\selectfont\textls[180]{Page | \thepage}}%
-}
+\pagestyle{empty}
 
 \newcommand{\cvsection}[1]{%
+  \needspace{3\baselineskip}%
   \par\addvspace{0.85em}%
   \noindent\makebox[\textwidth][c]{%
     {\color{cvblue}\rule{0.255\textwidth}{1.1pt}}%
@@ -70,20 +72,20 @@
 \newcommand{\jobheading}[3]{%
   \needspace{2.5\baselineskip}%
   \par\addvspace{0.9em}%
-  \noindent\begin{tabularx}{\textwidth}{@{}X>{\raggedleft\arraybackslash}p{31mm}@{}}
-    \textbf{#1}, #2 & #3
+  \noindent\begin{tabularx}{\textwidth}{@{}X>{\raggedleft\arraybackslash}p{35mm}@{}}
+    \textbf{#1}, #2 & \mbox{#3}
   \end{tabularx}%
   \par\addvspace{0.12em}%
 }
 
 \newcommand{\cvitem}[2]{\item \textbf{#1}: #2}
-\newcommand{\cvitemplain}[2]{\item \textbf{#1} #2}
+\newcommand{\cvitemplain}[2]{\item \textbf{#1}\hspace{0.35em}#2}
 
 \newcommand{\contactsep}{\hspace{0.35em}\textbullet\hspace{0.35em}}
 
 \begin{document}
-\fontsize{10.2}{13.6}\selectfont
-\justifying
+\fontsize{10.2}{13.0}\selectfont
+\RaggedRight
 \thispagestyle{empty}
 
 \begin{center}
@@ -91,10 +93,10 @@
   {\fontsize{8}{9.2}\selectfont
     Hamburg, 22527
     \contactsep +49 (176) 20204039
-    \contactsep \href{mailto:cedric@specht-labs.de}{cedric@specht-labs.de}
-    \contactsep \href{https://www.linkedin.com/in/cekienzl}{LinkedIn}
-    \contactsep \href{https://specht-labs.de}{Website}
-    \contactsep \href{https://github.com/cedi}{GitHub}
+    \contactsep \href{mailto:cedric@specht-labs.de}{cedric@specht-labs.de}\\[0.25em]
+    \href{https://www.linkedin.com/in/cekienzl}{linkedin.com/in/cekienzl}
+    \contactsep \href{https://specht-labs.de}{specht-labs.de}
+    \contactsep \href{https://github.com/cedi}{github.com/cedi}
   }
 \end{center}
 
