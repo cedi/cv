@@ -1,6 +1,62 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":semanticCommits"
+  ],
+  "timezone": "Europe/Berlin",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Dependency Dashboard",
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 8,
+  "rebaseWhen": "behind-base-branch",
+  "rangeStrategy": "bump",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "description": "Automerge digest, pin, patch, and minor updates once CI passes.",
+      "matchUpdateTypes": [
+        "digest",
+        "pin",
+        "pinDigest",
+        "patch",
+        "minor"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
+    },
+    {
+      "description": "Keep major updates explicit.",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "automerge": false,
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Group GitHub Actions updates together.",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "GitHub Actions",
+      "groupSlug": "github-actions",
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true,
+      "dependencyDashboardApproval": false
+    },
+    {
+      "description": "Group mise tool updates together.",
+      "matchManagers": [
+        "mise"
+      ],
+      "groupName": "mise tools",
+      "groupSlug": "mise-tools"
+    }
   ]
 }
