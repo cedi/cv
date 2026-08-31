@@ -1,0 +1,30 @@
+[tools]
+tinytex = "2026.08"
+
+[tasks.setup]
+description = "Install the LaTeX packages used by the CV"
+run = '''
+tlmgr update --self
+tlmgr install latexmk carlito geometry xcolor enumitem fancyhdr ragged2e microtype needspace hyperref eso-pic
+'''
+
+[tasks.build]
+description = "Render the CV to output/pdf/Cedric_Specht.pdf"
+depends = ["setup"]
+run = '''
+mkdir -p build output/pdf
+latexmk -pdf \
+  -interaction=nonstopmode \
+  -halt-on-error \
+  -file-line-error \
+  -outdir=build \
+  cv.tex
+cp build/cv.pdf output/pdf/Cedric_Specht.pdf
+'''
+
+[tasks.clean]
+description = "Remove generated LaTeX and PDF files"
+run = '''
+latexmk -C -outdir=build cv.tex
+rm -f output/pdf/Cedric_Specht.pdf
+'''
