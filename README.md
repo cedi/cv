@@ -17,6 +17,7 @@ Other useful tasks:
 
 ```sh
 mise run setup  # install or update the required TeX packages
+mise run site   # build the PDF and assemble the GitHub Pages site
 mise run clean  # remove generated files
 ```
 
@@ -29,6 +30,11 @@ mise run clean  # remove generated files
 
 The `\jobheading` and `\cvitem` commands keep entries consistent. Escape LaTeX's reserved characters in normal text, for example `\&`, `\%`, and `\#`.
 
-## Continuous integration
+## Published PDF
 
-GitHub Actions builds the CV on every push to `main`, on pull requests, and when started manually. Each run uploads `Cedric_Specht.pdf` as a workflow artifact.
+GitHub Actions builds the CV on pull requests and publishes it to GitHub Pages after every push to `main`:
+
+- `https://cedi.github.io/cv/`
+- `https://cedi.github.io/cv/Cedric_Specht.pdf`
+
+The site root redirects to the PDF. The Pages deployment uses the `github-pages` environment, which exposes the deployed URL in the workflow run.

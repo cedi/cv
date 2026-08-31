@@ -22,9 +22,19 @@ latexmk -pdf \
 cp build/cv.pdf output/pdf/Cedric_Specht.pdf
 '''
 
+[tasks.site]
+description = "Build the GitHub Pages site in build/site"
+depends = ["build"]
+run = '''
+mkdir -p build/site
+cp site/index.html build/site/index.html
+cp output/pdf/Cedric_Specht.pdf build/site/Cedric_Specht.pdf
+'''
+
 [tasks.clean]
 description = "Remove generated LaTeX and PDF files"
 run = '''
 latexmk -C -outdir=build cv.tex
+rm -rf build/site
 rm -f output/pdf/Cedric_Specht.pdf
 '''
